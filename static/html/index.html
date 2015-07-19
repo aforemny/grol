@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+  <title>Grol</title>
+  <script type="text/javascript" src="elm.js"></script>
+</head>
+
+<body>
+</body>
+
+<script type="text/javascript">
+  var storedState = localStorage.getItem('state');
+  var startingState = storedState ? storedState : null;
+
+  var app = Elm.fullscreen(Elm.Main, {getStorage:storedState});
+
+  app.ports.setStorage.subscribe(function(state) {
+    console.log(state);
+    localStorage.setItem('state', state);
+  });
+</script>
+
+</html>
